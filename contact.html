@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - The Luckless Mage</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Georgia, serif;
+    background:#0f1117;
+    color:#f5f0e6;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 25px;
+    border-bottom:1px solid #222;
+    background:#0f1117;
+    position:sticky;
+    top:0;
+}
+
+nav a{
+    color:#f5f0e6;
+    text-decoration:none;
+    margin:0 10px;
+}
+
+nav a:hover{
+    color:#d4af37;
+}
+
+/* LANG */
+.lang button{
+    background:none;
+    border:1px solid #d4af37;
+    color:#d4af37;
+    padding:5px 10px;
+    margin-left:5px;
+    cursor:pointer;
+}
+
+.lang button:hover{
+    background:#d4af37;
+    color:#0f1117;
+}
+
+header{
+    text-align:center;
+    padding:80px 20px;
+}
+
+h1{
+    color:#d4af37;
+    font-size:3rem;
+}
+
+section{
+    max-width:800px;
+    margin:auto;
+    padding:40px 20px;
+    line-height:1.6;
+}
+
+a.mail{
+    color:#d4af37;
+    text-decoration:none;
+    font-size:1.2rem;
+}
+
+/* LANGUAGE */
+.it{display:none;}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div><strong>The Luckless Mage</strong></div>
+
+    <div>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="process.html">Process</a>
+        <a href="collection.html">Collection</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</nav>
+
+<header>
+    <h1 class="en">Contact</h1>
+    <h1 class="it">Contatti</h1>
+</header>
+
+<section>
+
+<p class="en">
+Interested in a dice set or a custom commission? Get in touch.
+</p>
+
+<p class="it">
+Interessato a un set di dadi o a una commissione personalizzata? Contattami.
+</p>
+
+<p>
+📧 <a class="mail" href="mailto:thelucklessmage@gmail.com">thelucklessmage@gmail.com</a>
+</p>
+
+<p class="en">
+You can also reach me on Instagram for custom orders and updates.
+</p>
+
+<p class="it">
+Puoi contattarmi anche su Instagram per ordini personalizzati e aggiornamenti.
+</p>
+
+</section>
+
+<script>
+function setLang(lang){
+    localStorage.setItem("lang", lang);
+
+    document.querySelectorAll(".en").forEach(el=>{
+        el.style.display = (lang==="en") ? "block":"none";
+    });
+
+    document.querySelectorAll(".it").forEach(el=>{
+        el.style.display = (lang==="it") ? "block":"none";
+    });
+}
+
+window.onload = function(){
+    let lang = localStorage.getItem("lang") || "en";
+    setLang(lang);
+};
+</script>
+
+</body>
+</html>
