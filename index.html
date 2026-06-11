@@ -105,6 +105,22 @@ section{
     .lang{
         margin-top:5px;
     }
+
+.nav-links{
+    flex-direction:column;
+    gap:5px;
+}
+
+.dropdown-content{
+    position:static;
+    border:none;
+    margin-top:5px;
+}
+
+.dropdown:hover .dropdown-content{
+    display:block;
+}
+    
 }
 
 /* LOGO */
@@ -113,6 +129,43 @@ section{
     width:auto;
     filter: brightness(1.1);
 }
+
+
+ .nav-links{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.dropdown{
+    position:relative;
+    display:inline-block;
+}
+
+.dropdown-content{
+    display:none;
+    position:absolute;
+    background:#0f1117;
+    min-width:180px;
+    border:1px solid #333;
+    z-index:20;
+}
+
+.dropdown-content a{
+    display:block;
+    padding:12px 14px;
+    margin:0;
+    color:#f5f0e6;
+}
+
+.dropdown-content a:hover{
+    background:#151923;
+    color:#d4af37;
+}
+
+.dropdown:hover .dropdown-content{
+    display:block;
+}   
     
 </style>
 </head>
@@ -124,13 +177,22 @@ section{
     <img src="logo.png" alt="The Luckless Mage">
 </div>
 
-    <div>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="process.html">Process</a>
-        <a href="collection.html">Collection</a>
-        <a href="contact.html">Contact</a>
+   <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="process.html">Process</a>
+
+    <div class="dropdown">
+        <a href="collection.html">Collection ▾</a>
+        <div class="dropdown-content">
+            <a href="dice-sets.html">Dice Sets</a>
+            <a href="single-dice.html">Single Dice</a>
+            <a href="chonk-dice.html">Chonk Dice</a>
+        </div>
     </div>
+
+    <a href="contact.html">Contact</a>
+</div>
 
     <div class="lang">
         <button onclick="setLang('en')">EN</button>
