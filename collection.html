@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collection - The Luckless Mage</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Georgia, serif;
+    background:#0f1117;
+    color:#f5f0e6;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 25px;
+    border-bottom:1px solid #222;
+    background:#0f1117;
+    position:sticky;
+    top:0;
+}
+
+nav a{
+    color:#f5f0e6;
+    text-decoration:none;
+    margin:0 10px;
+}
+
+nav a:hover{
+    color:#d4af37;
+}
+
+/* LANG */
+.lang button{
+    background:none;
+    border:1px solid #d4af37;
+    color:#d4af37;
+    padding:5px 10px;
+    margin-left:5px;
+    cursor:pointer;
+}
+
+.lang button:hover{
+    background:#d4af37;
+    color:#0f1117;
+}
+
+header{
+    text-align:center;
+    padding:80px 20px;
+}
+
+h1{
+    color:#d4af37;
+    font-size:3rem;
+}
+
+section{
+    max-width:1000px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    border:1px solid #333;
+    border-radius:10px;
+    overflow:hidden;
+    text-align:center;
+    padding:20px;
+    transition:0.3s;
+}
+
+.card:hover{
+    border-color:#d4af37;
+    transform:scale(1.03);
+}
+
+.card img{
+    width:100%;
+    border-radius:8px;
+}
+
+/* LANGUAGE */
+.it{display:none;}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div><strong>The Luckless Mage</strong></div>
+
+    <div>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="process.html">Process</a>
+        <a href="collection.html">Collection</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="lang">
+        <button onclick="setLang('en')">EN</button>
+        <button onclick="setLang('it')">IT</button>
+    </div>
+</nav>
+
+<header>
+    <h1 class="en">Collection</h1>
+    <h1 class="it">Collezione</h1>
+</header>
+
+<section>
+
+<div class="grid">
+
+    <div class="card">
+        <img src="https://placehold.co/400x400?text=Dice+Set">
+        <h3 class="en">Dice Sets</h3>
+        <h3 class="it">Set di dadi</h3>
+    </div>
+
+    <div class="card">
+        <img src="https://placehold.co/400x400?text=27mm">
+        <h3 class="en">Single Dice 27mm</h3>
+        <h3 class="it">Dadi singoli 27mm</h3>
+    </div>
+
+    <div class="card">
+        <img src="https://placehold.co/400x400?text=D20+32mm">
+        <h3 class="en">D20 32mm</h3>
+        <h3 class="it">D20 32mm</h3>
+    </div>
+
+    <div class="card">
+        <img src="https://placehold.co/400x400?text=Chonk+62mm">
+        <h3 class="en">Chonk Dice 62mm</h3>
+        <h3 class="it">Dado Chonk 62mm</h3>
+    </div>
+
+</div>
+
+</section>
+
+<script>
+function setLang(lang){
+    localStorage.setItem("lang", lang);
+
+    document.querySelectorAll(".en").forEach(el=>{
+        el.style.display = (lang==="en") ? "block":"none";
+    });
+
+    document.querySelectorAll(".it").forEach(el=>{
+        el.style.display = (lang==="it") ? "block":"none";
+    });
+}
+
+window.onload = function(){
+    let lang = localStorage.getItem("lang") || "en";
+    setLang(lang);
+};
+</script>
+
+</body>
+</html>
