@@ -195,7 +195,7 @@ h2{
     display:none;
 }
 
-@media (max-width: 768px){
+@media (max-width:768px){
 
     h1{
         font-size:2.2rem !important;
@@ -205,86 +205,83 @@ h2{
         flex-direction:column;
         gap:10px;
         text-align:center;
+        padding:15px 12px;
+    }
+
+    .nav-top{
+        display:grid;
+        grid-template-columns:1fr auto 1fr;
+        align-items:center;
+        width:100%;
+    }
+
+    .logo{
+        grid-column:2;
+        justify-self:center;
+    }
+
+    .logo img{
+        height:65px;
+    }
+
+    .lang{
+        grid-column:3;
+        justify-self:end;
+        margin-top:0;
+    }
+
+    .lang button{
+        padding:4px 8px;
+        font-size:0.8rem;
+    }
+
+    .nav-links{
+        flex-direction:row;
+        flex-wrap:nowrap;
+        justify-content:center;
+        gap:2px;
+        width:100%;
+        margin-top:8px;
     }
 
     nav a{
         display:inline-block;
-        margin:5px;
+        margin:0 4px;
+        font-size:0.82rem;
+    }
+
+    .dropdown{
+        position:relative;
+    }
+
+    .dropdown-content{
+        position:absolute;
+        left:50%;
+        transform:translateX(-50%);
+        border:1px solid #333;
+        margin-top:5px;
+    }
+
+    .dropdown-content a{
+        font-size:0.85rem;
+        padding:10px 12px;
     }
 
     section{
         padding:30px 15px;
     }
 
-    .grid{
-        grid-template-columns:1fr !important;
+    .about-grid{
+        grid-template-columns:1fr;
+        gap:30px;
     }
 
-    .card{
-        padding:15px;
+    .about-card{
+        border-left:none;
+        border-top:1px solid #d4af37;
+        padding-left:0;
+        padding-top:25px;
     }
-
-    .lang{
-        margin-top:5px;
-    }
-
-.nav-top{
-    display:grid;
-    grid-template-columns:1fr auto 1fr;
-    align-items:center;
-    width:100%;
-}
-
-.logo{
-    grid-column:2;
-    justify-self:center;
-}
-
-.logo img{
-    height:75px;
-}
-
-.lang{
-    grid-column:3;
-    justify-self:end;
-    margin-top:0;
-}
-
-nav a{
-    margin:0 4px;
-    font-size:0.82rem;
-}
-
-.nav-links{
-    flex-direction:row;
-    flex-wrap:nowrap;
-    justify-content:center;
-    gap:2px;
-    width:100%;
-    margin-top:8px;
-}
-
-.dropdown{
-    position:relative;
-}
-
-.dropdown-content{
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%);
-    border:1px solid #333;
-    margin-top:5px;
-}
-
-.dropdown-content a{
-    font-size:0.85rem;
-    padding:10px 12px;
-}
-
-.dropdown:hover .dropdown-content{
-    display:block;
-}
-    
 }
 </style>
 </head>
@@ -306,7 +303,6 @@ nav a{
     <div class="nav-links">
         <a href="index.html">Home</a>
 
-
         <div class="dropdown">
             <a href="collection.html">Collection ▾</a>
             <div class="dropdown-content">
@@ -316,7 +312,7 @@ nav a{
             </div>
         </div>
         <a href="about.html">About</a>
-        <a href="process.html">Process</a>        
+        <a href="process.html">Process</a> 
         <a href="contact.html">Contact</a>
     </div>
 </nav>
