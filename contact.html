@@ -117,6 +117,62 @@ a.mail{
     width:auto;
     filter: brightness(1.1);
 }
+
+.nav-top{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    width:100%;
+}
+
+.logo{
+    grid-column:2;
+    justify-self:center;
+}
+
+.lang{
+    grid-column:3;
+    justify-self:end;
+}
+
+.nav-links{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    margin-top:10px;
+}
+
+.dropdown{
+    position:relative;
+    display:inline-block;
+}
+
+.dropdown-content{
+    display:none;
+    position:absolute;
+    background:#0f1117;
+    min-width:180px;
+    border:1px solid #333;
+    z-index:20;
+}
+
+.dropdown-content a{
+    display:block;
+    padding:12px 14px;
+    margin:0;
+    color:#f5f0e6;
+}
+
+.dropdown-content a:hover{
+    background:#151923;
+    color:#d4af37;
+}
+
+.dropdown:hover .dropdown-content{
+    display:block;
+}
+
     
 </style>
 </head>
