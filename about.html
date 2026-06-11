@@ -28,9 +28,9 @@ nav{
 nav a{
     color:#f5f0e6;
     text-decoration:none;
-    margin:0 10px;
+    margin:0 8px;
+    font-size:1rem;
 }
-
 nav a:hover{
     color:#d4af37;
 }
@@ -178,7 +178,79 @@ h2{
     .lang{
         margin-top:5px;
     }
+
+nav a{
+    margin:0 4px;
+    font-size:0.82rem;
 }
+
+.nav-links{
+    flex-direction:row;
+    flex-wrap:nowrap;
+    justify-content:center;
+    gap:2px;
+}
+
+.dropdown{
+    position:relative;
+}
+
+.dropdown-content{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    border:1px solid #333;
+    margin-top:5px;
+}
+
+.dropdown-content a{
+    font-size:0.85rem;
+    padding:10px 12px;
+}
+
+.dropdown:hover .dropdown-content{
+    display:block;
+}
+    
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.dropdown{
+    position:relative;
+    display:inline-block;
+}
+
+.dropdown-content{
+    display:none;
+    position:absolute;
+    background:#0f1117;
+    min-width:180px;
+    border:1px solid #333;
+    z-index:20;
+}
+
+.dropdown-content a{
+    display:block;
+    padding:12px 14px;
+    margin:0;
+    color:#f5f0e6;
+}
+
+.dropdown-content a:hover{
+    background:#151923;
+    color:#d4af37;
+}
+
+.dropdown:hover .dropdown-content{
+    display:block;
+}
+
+    
 </style>
 </head>
 
@@ -189,13 +261,22 @@ h2{
         <img src="logo.png" alt="The Luckless Mage">
     </div>
 
-    <div>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="process.html">Process</a>
-        <a href="collection.html">Collection</a>
-        <a href="contact.html">Contact</a>
+   <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="process.html">Process</a>
+
+    <div class="dropdown">
+        <a href="collection.html">Collection ▾</a>
+        <div class="dropdown-content">
+            <a href="dice-sets.html">Dice Sets</a>
+            <a href="single-dice.html">Single Dice</a>
+            <a href="chonk-dice.html">Chonk Dice</a>
+        </div>
     </div>
+
+    <a href="contact.html">Contact</a>
+</div>
 
     <div class="lang">
         <button onclick="setLang('en')">EN</button>
