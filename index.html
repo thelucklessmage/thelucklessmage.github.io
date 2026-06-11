@@ -107,13 +107,21 @@ section{
     }
 
 .nav-links{
-    flex-direction:column;
-    gap:5px;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:6px;
+}
+
+.dropdown{
+    position:relative;
 }
 
 .dropdown-content{
-    position:static;
-    border:none;
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    border:1px solid #333;
     margin-top:5px;
 }
 
