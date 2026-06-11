@@ -25,14 +25,27 @@ nav{
     z-index:10;
 }
 
-nav a{
-    color:#f5f0e6;
-    text-decoration:none;
-    margin:0 8px;
-    font-size:1rem;
+.nav-top{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    width:100%;
 }
-nav a:hover{
-    color:#d4af37;
+
+.logo{
+    grid-column:2;
+    justify-self:center;
+}
+
+.logo img{
+    height:75px;
+    width:auto;
+    filter:brightness(1.1);
+}
+
+.lang{
+    grid-column:3;
+    justify-self:end;
 }
 
 .lang button{
@@ -49,10 +62,53 @@ nav a:hover{
     color:#0f1117;
 }
 
-.logo img{
-    height:75px;
-    width:auto;
-    filter: brightness(1.1);
+.nav-links{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    margin-top:10px;
+}
+
+nav a{
+    color:#f5f0e6;
+    text-decoration:none;
+    margin:0 8px;
+    font-size:1rem;
+}
+
+nav a:hover{
+    color:#d4af37;
+}
+
+.dropdown{
+    position:relative;
+    display:inline-block;
+}
+
+.dropdown-content{
+    display:none;
+    position:absolute;
+    background:#0f1117;
+    min-width:180px;
+    border:1px solid #333;
+    z-index:20;
+}
+
+.dropdown-content a{
+    display:block;
+    padding:12px 14px;
+    margin:0;
+    color:#f5f0e6;
+}
+
+.dropdown-content a:hover{
+    background:#151923;
+    color:#d4af37;
+}
+
+.dropdown:hover .dropdown-content{
+    display:block;
 }
 
 header{
@@ -82,7 +138,7 @@ section{
 
 .about-grid{
     display:grid;
-    grid-template-columns: 0.9fr 1.1fr;
+    grid-template-columns:0.9fr 1.1fr;
     gap:50px;
     align-items:center;
 }
@@ -100,7 +156,6 @@ section{
     aspect-ratio:4/5;
     object-fit:cover;
     object-position:center bottom;
-    
 }
 
 .about-card{
@@ -136,10 +191,11 @@ h2{
     margin:20px 0;
 }
 
-.it{display:none;}
+.it{
+    display:none;
+}
 
-/* ===== MOBILE PRO FIX ===== */
-@media (max-width: 768px){
+@media (max-width:768px){
 
     h1{
         font-size:2.2rem !important;
@@ -149,175 +205,116 @@ h2{
         flex-direction:column;
         gap:10px;
         text-align:center;
+        padding:15px 12px;
+    }
+
+    .nav-top{
+        display:grid;
+        grid-template-columns:1fr auto 1fr;
+        align-items:center;
+        width:100%;
+    }
+
+    .logo{
+        grid-column:2;
+        justify-self:center;
+    }
+
+    .logo img{
+        height:65px;
+    }
+
+    .lang{
+        grid-column:3;
+        justify-self:end;
+        margin-top:0;
+    }
+
+    .lang button{
+        padding:4px 8px;
+        font-size:0.8rem;
+    }
+
+    .nav-links{
+        flex-direction:row;
+        flex-wrap:nowrap;
+        justify-content:center;
+        gap:2px;
+        width:100%;
+        margin-top:8px;
     }
 
     nav a{
         display:inline-block;
-        margin:5px;
+        margin:0 4px;
+        font-size:0.82rem;
+    }
+
+    .dropdown{
+        position:relative;
+    }
+
+    .dropdown-content{
+        position:absolute;
+        left:50%;
+        transform:translateX(-50%);
+        border:1px solid #333;
+        margin-top:5px;
+    }
+
+    .dropdown-content a{
+        font-size:0.85rem;
+        padding:10px 12px;
     }
 
     section{
         padding:30px 15px;
     }
 
-    .grid{
-        grid-template-columns:1fr !important;
+    .about-grid{
+        grid-template-columns:1fr;
+        gap:30px;
     }
 
-    .card{
-        padding:15px;
+    .about-card{
+        border-left:none;
+        border-top:1px solid #d4af37;
+        padding-left:0;
+        padding-top:25px;
     }
-
-    .lang{
-        margin-top:5px;
-    }
-
-.nav-top{
-    display:grid;
-    grid-template-columns:1fr auto 1fr;
-    align-items:center;
-    width:100%;
 }
-
-.logo{
-    grid-column:2;
-    justify-self:center;
-}
-
-.logo img{
-    height:65px;
-}
-
-.lang{
-    grid-column:3;
-    justify-self:end;
-    margin-top:0;
-}
-
-nav a{
-    margin:0 4px;
-    font-size:0.82rem;
-}
-
-.nav-links{
-    flex-direction:row;
-    flex-wrap:nowrap;
-    justify-content:center;
-    gap:2px;
-    width:100%;
-    margin-top:8px;
-}
-
-.dropdown{
-    position:relative;
-}
-
-.dropdown-content{
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%);
-    border:1px solid #333;
-    margin-top:5px;
-}
-
-.dropdown-content a{
-    font-size:0.85rem;
-    padding:10px 12px;
-}
-
-.dropdown:hover .dropdown-content{
-    display:block;
-}
-    
-}
-
-    /* =====FINE MOBILE PRO FIX ===== */
-
-.nav-top{
-    display:grid;
-    grid-template-columns:1fr auto 1fr;
-    align-items:center;
-    width:100%;
-}
-
-.logo{
-    grid-column:2;
-    justify-self:center;
-}
-
-.lang{
-    grid-column:3;
-    justify-self:end;
-}
-
-.nav-links{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-    margin-top:10px;
-}
-
-.dropdown{
-    position:relative;
-    display:inline-block;
-}
-
-.dropdown-content{
-    display:none;
-    position:absolute;
-    background:#0f1117;
-    min-width:180px;
-    border:1px solid #333;
-    z-index:20;
-}
-
-.dropdown-content a{
-    display:block;
-    padding:12px 14px;
-    margin:0;
-    color:#f5f0e6;
-}
-
-.dropdown-content a:hover{
-    background:#151923;
-    color:#d4af37;
-}
-
-.dropdown:hover .dropdown-content{
-    display:block;
-}
-    
 </style>
 </head>
 
 <body>
 
 <nav>
-    <div class="logo">
-        <img src="logo.png" alt="The Luckless Mage">
-    </div>
+    <div class="nav-top">
+        <div class="logo">
+            <img src="logo.png" alt="The Luckless Mage">
+        </div>
 
-   <div class="nav-links">
-    <a href="index.html">Home</a>
- 
-
-    <div class="dropdown">
-        <a href="collection.html">Collection ▾</a>
-        <div class="dropdown-content">
-            <a href="dice-sets.html">Dice Sets</a>
-            <a href="single-dice.html">Single Dice</a>
-            <a href="chonk-dice.html">Chonk Dice</a>
+        <div class="lang">
+            <button onclick="setLang('en')">EN</button>
+            <button onclick="setLang('it')">IT</button>
         </div>
     </div>
-   <a href="about.html">About</a>
-    <a href="process.html">Process</a>       
-    <a href="contact.html">Contact</a>
-</div>
 
-    <div class="lang">
-        <button onclick="setLang('en')">EN</button>
-        <button onclick="setLang('it')">IT</button>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="process.html">Process</a>
+
+        <div class="dropdown">
+            <a href="collection.html">Collection ▾</a>
+            <div class="dropdown-content">
+                <a href="dice-sets.html">Dice Sets</a>
+                <a href="single-dice.html">Single Dice</a>
+                <a href="chonk-dice.html">Chonk Dice</a>
+            </div>
+        </div>
+
+        <a href="contact.html">Contact</a>
     </div>
 </nav>
 
@@ -338,7 +335,7 @@ nav a{
     <div class="about-grid">
 
         <div class="portrait">
-           <img src="simone.png" alt="Portrait of Simone Morelli">
+            <img src="simone.png" alt="Portrait of Simone Morelli">
         </div>
 
         <div class="about-card">
