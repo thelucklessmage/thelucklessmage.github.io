@@ -231,10 +231,31 @@ nav a{
     
 }
 
+    /* =====FINE MOBILE PRO FIX ===== */
+
+.nav-top{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    width:100%;
+}
+
+.logo{
+    grid-column:2;
+    justify-self:center;
+}
+
+.lang{
+    grid-column:3;
+    justify-self:end;
+}
+
 .nav-links{
     display:flex;
+    justify-content:center;
     align-items:center;
     gap:10px;
+    margin-top:10px;
 }
 
 .dropdown{
@@ -266,7 +287,6 @@ nav a{
 .dropdown:hover .dropdown-content{
     display:block;
 }
-
     
 </style>
 </head>
