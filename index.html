@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Luckless Mage</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Georgia, serif;
+    background:#0f1117;
+    color:#f5f0e6;
+}
+
+/* TOP BAR */
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 25px;
+    position:sticky;
+    top:0;
+    background:#0f1117;
+    border-bottom:1px solid #222;
+}
+
+.lang button{
+    background:none;
+    border:1px solid #d4af37;
+    color:#d4af37;
+    padding:6px 12px;
+    margin-left:5px;
+    cursor:pointer;
+}
+
+.lang button:hover{
+    background:#d4af37;
+    color:#0f1117;
+}
+
+/* HERO */
+header{
+    text-align:center;
+    padding:120px 20px;
+    background:linear-gradient(to bottom,#131722,#0f1117);
+}
+
+h1{
+    font-size:4rem;
+    color:#d4af37;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    font-size:1.2rem;
+    max-width:700px;
+    margin:auto;
+}
+
+/* SECTIONS */
+section{
+    max-width:1000px;
+    margin:auto;
+    padding:60px 20px;
+}
+
+h2{
+    color:#d4af37;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.gallery img{
+    width:100%;
+    border-radius:10px;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    border-top:1px solid #333;
+}
+
+/* LANGUAGE CONTROL */
+.it{display:none;}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+    <div><strong>The Luckless Mage</strong></div>
+
+    <div class="lang">
+        <button onclick="setLang('en')">EN</button>
+        <button onclick="setLang('it')">IT</button>
+    </div>
+</div>
+
+<header>
+    <h1>The Luckless Mage</h1>
+
+    <p class="subtitle en">
+        Handmade resin dice forged for adventurers,
+        storytellers and seekers of fortune.
+    </p>
+
+    <p class="subtitle it">
+        Dadi artigianali in resina forgiati per avventurieri,
+        narratori e cercatori di fortuna.
+    </p>
+</header>
+
+<section>
+    <h2>About</h2>
+
+    <p class="en">
+        Welcome to The Luckless Mage.
+        Every dice set is handcrafted in resin, carefully cast and finished by hand.
+    </p>
+
+    <p class="it">
+        Benvenuti in The Luckless Mage.
+        Ogni set di dadi è realizzato artigianalmente in resina, colato e rifinito a mano.
+    </p>
+</section>
+
+<section>
+    <h2>Gallery</h2>
+
+    <div class="gallery">
+        <img src="https://placehold.co/600x600?text=Dice+1">
+        <img src="https://placehold.co/600x600?text=Dice+2">
+        <img src="https://placehold.co/600x600?text=Dice+3">
+    </div>
+</section>
+
+<section>
+    <h2>Contact</h2>
+
+    <p>Instagram: @thelucklessmage</p>
+    <p>Email coming soon</p>
+</section>
+
+<footer>
+    © 2026 The Luckless Mage
+</footer>
+
+<script>
+function setLang(lang){
+    if(lang === 'en'){
+        document.querySelectorAll('.en').forEach(el => el.style.display='block');
+        document.querySelectorAll('.it').forEach(el => el.style.display='none');
+    } else {
+        document.querySelectorAll('.en').forEach(el => el.style.display='none');
+        document.querySelectorAll('.it').forEach(el => el.style.display='block');
+    }
+}
+</script>
+
+</body>
+</html>
