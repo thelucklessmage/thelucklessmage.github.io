@@ -19,9 +19,9 @@ nav{
     align-items:center;
     padding:15px 25px;
     border-bottom:1px solid #222;
-    background:#0f1117;
     position:sticky;
     top:0;
+    background:#0f1117;
 }
 
 nav a{
@@ -32,6 +32,21 @@ nav a{
 
 nav a:hover{
     color:#d4af37;
+}
+
+/* LANG */
+.lang button{
+    background:none;
+    border:1px solid #d4af37;
+    color:#d4af37;
+    padding:5px 10px;
+    margin-left:5px;
+    cursor:pointer;
+}
+
+.lang button:hover{
+    background:#d4af37;
+    color:#0f1117;
 }
 
 header{
@@ -51,12 +66,8 @@ section{
     line-height:1.6;
 }
 
-footer{
-    text-align:center;
-    padding:30px;
-    border-top:1px solid #333;
-    margin-top:60px;
-}
+/* LANGUAGE */
+.it{display:none;}
 </style>
 </head>
 
@@ -72,40 +83,62 @@ footer{
         <a href="collection.html">Collection</a>
         <a href="contact.html">Contact</a>
     </div>
+
+    <div class="lang">
+        <button onclick="setLang('en')">EN</button>
+        <button onclick="setLang('it')">IT</button>
+    </div>
 </nav>
 
 <header>
-    <h1>About Me</h1>
+    <h1 class="en">About Me</h1>
+    <h1 class="it">Chi sono</h1>
 </header>
 
 <section>
-    <h2>The story</h2>
 
-    <p>
-        The Luckless Mage was born from a passion for tabletop RPGs and handcrafted art.
-        Every dice set is created with patience, precision, and a touch of chaos.
-    </p>
+<h2 class="en">The story</h2>
+<h2 class="it">La storia</h2>
 
-    <p>
-        I started making resin dice as a way to bring unique, magical objects into the hands of players
-        who value storytelling and immersion.
-    </p>
+<p class="en">
+The Luckless Mage was born from a passion for tabletop RPGs and handcrafted art. Every dice set is created with patience, precision, and a touch of chaos.
+</p>
 
-    <h2>Craftsmanship</h2>
+<p class="it">
+The Luckless Mage nasce dalla passione per i giochi di ruolo e l’artigianato. Ogni set di dadi è creato con pazienza, precisione e un pizzico di caos.
+</p>
 
-    <p>
-        Each piece is individually cast, sanded, polished and inspected.
-        No two dice are ever exactly the same — and that is part of their magic.
-    </p>
+<h2 class="en">Craftsmanship</h2>
+<h2 class="it">Artigianato</h2>
 
-    <p>
-        Based in Switzerland, I focus on quality, detail, and unique fantasy aesthetics.
-    </p>
+<p class="en">
+Each piece is individually cast, sanded, polished and inspected. No two dice are ever exactly the same.
+</p>
+
+<p class="it">
+Ogni pezzo è colato, levigato, lucidato e controllato singolarmente. Nessun dado è mai identico a un altro.
+</p>
+
 </section>
 
-<footer>
-    © 2026 The Luckless Mage
-</footer>
+<script>
+function setLang(lang){
+    localStorage.setItem("lang", lang);
+
+    document.querySelectorAll(".en").forEach(el=>{
+        el.style.display = (lang==="en") ? "block":"none";
+    });
+
+    document.querySelectorAll(".it").forEach(el=>{
+        el.style.display = (lang==="it") ? "block":"none";
+    });
+}
+
+window.onload = function(){
+    let lang = localStorage.getItem("lang") || "en";
+    setLang(lang);
+};
+</script>
 
 </body>
 </html>
