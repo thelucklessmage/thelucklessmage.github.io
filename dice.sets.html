@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dice Sets - The Luckless Mage</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Georgia, serif;
+    background:#0f1117;
+    color:#f5f0e6;
+    position:relative;
+}
+
+body::before{
+    content:"ᚱ ᚢ ᚾ ᛗ ᚨ ᚷ ᛖ";
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%) rotate(-18deg);
+    font-size:7rem;
+    letter-spacing:0.35em;
+    color:rgba(212,175,55,0.03);
+    white-space:nowrap;
+    pointer-events:none;
+    z-index:0;
+}
+
+nav,
+header,
+section{
+    position:relative;
+    z-index:1;
+}
+
+header{
+    text-align:center;
+    padding:80px 20px 40px;
+    background:linear-gradient(to bottom, rgba(19,23,34,0.96), rgba(15,17,23,0.72));
+}
+
+h1{
+    color:#d4af37;
+    font-size:3.4rem;
+    margin:0 0 15px;
+    font-weight:normal;
+}
+
+.page-subtitle{
+    max-width:720px;
+    margin:0 auto;
+    color:#cfc7b5;
+    line-height:1.7;
+    font-size:1.1rem;
+}
+
+section{
+    max-width:1150px;
+    margin:auto;
+    padding:70px 20px;
+}
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+}
+
+.product-card{
+    border:1px solid #333;
+    border-radius:18px;
+    overflow:hidden;
+    background:rgba(18,22,33,0.92);
+    transition:0.3s;
+}
+
+.product-card:hover{
+    border-color:#d4af37;
+    transform:translateY(-5px);
+}
+
+.product-card img{
+    width:100%;
+    display:block;
+    aspect-ratio:1/1;
+    object-fit:cover;
+}
+
+.product-content{
+    padding:24px;
+    text-align:center;
+}
+
+.product-content h2{
+    color:#f5f0e6;
+    font-size:1.4rem;
+    margin:0 0 8px;
+}
+
+.product-content p{
+    color:#cfc7b5;
+    line-height:1.5;
+    margin:0 0 18px;
+}
+
+.product-actions{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.button{
+    display:inline-block;
+    padding:10px 16px;
+    border:1px solid #d4af37;
+    color:#d4af37;
+    text-decoration:none;
+    letter-spacing:0.04em;
+    transition:0.3s;
+}
+
+.button:hover{
+    background:#d4af37;
+    color:#0f1117;
+}
+
+.button.secondary{
+    border-color:#555;
+    color:#f5f0e6;
+}
+
+.button.secondary:hover{
+    border-color:#d4af37;
+    color:#d4af37;
+    background:transparent;
+}
+
+.back-link{
+    text-align:center;
+    margin-top:55px;
+}
+
+.it{
+    display:none;
+}
+
+@media (max-width:768px){
+
+    body::before{
+        font-size:3.8rem;
+        letter-spacing:0.2em;
+    }
+
+    header{
+        padding:60px 18px 30px;
+    }
+
+    h1{
+        font-size:2.4rem;
+    }
+
+    .page-subtitle{
+        font-size:1rem;
+    }
+
+    section{
+        padding:45px 15px;
+    }
+
+    .product-grid{
+        grid-template-columns:1fr;
+        gap:24px;
+    }
+}
+</style>
+
+<link rel="stylesheet" href="nav.css">
+</head>
+
+<body>
+
+<nav>
+    <div class="nav-top">
+        <div class="logo">
+            <img src="logo.png" alt="The Luckless Mage">
+        </div>
+
+        <div class="lang">
+            <button onclick="setLang('en')">EN</button>
+            <button onclick="setLang('it')">IT</button>
+        </div>
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+
+        <div class="dropdown">
+            <a href="collection.html">Collection ▾</a>
+            <div class="dropdown-content">
+                <a href="dice-sets.html">Dice Sets</a>
+                <a href="single-dice.html">Single Dice</a>
+                <a href="chonk-dice.html">Chonk Dice</a>
+            </div>
+        </div>
+
+        <a href="about.html">About</a>
+        <a href="process.html">Process</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</nav>
+
+<header>
+    <h1 class="en">Dice Sets</h1>
+    <h1 class="it">Set di dadi</h1>
+
+    <p class="page-subtitle en">
+        Complete handmade resin dice sets, crafted in small batches for characters,
+        campaigns and collectors.
+    </p>
+
+    <p class="page-subtitle it">
+        Set completi di dadi artigianali in resina, realizzati in piccole serie per personaggi,
+        campagne e collezionisti.
+    </p>
+</header>
+
+<section>
+
+    <div class="product-grid">
+
+        <!-- PRODUCT 1 -->
+        <article class="product-card">
+            <a href="set-arcane-ember.html">
+                <img src="https://placehold.co/900x900?text=Arcane+Ember" alt="Arcane Ember handmade resin dice set">
+            </a>
+
+            <div class="product-content">
+                <h2>
+                    <a href="set-arcane-ember.html" style="color:inherit; text-decoration:none;">
+                        Arcane Ember
+                    </a>
+                </h2>
+
+                <p class="en">A warm, arcane set with deep ember tones and magical contrast.</p>
+                <p class="it">Un set caldo e arcano, con toni di brace e contrasti magici.</p>
+
+                <div class="product-actions">
+                    <a class="button secondary en" href="set-arcane-ember.html">View details</a>
+                    <a class="button secondary it" href="set-arcane-ember.html">Dettagli</a>
+
+                    <a class="button en" href="mailto:thelucklessmage@gmail.com?subject=Arcane Ember dice set">Buy / Request</a>
+                    <a class="button it" href="mailto:thelucklessmage@gmail.com?subject=Set Arcane Ember">Acquista / Richiedi</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- PRODUCT 2 -->
+        <article class="product-card">
+            <a href="set-void-bloom.html">
+                <img src="https://placehold.co/900x900?text=Void+Bloom" alt="Void Bloom handmade resin dice set">
+            </a>
+
+            <div class="product-content">
+                <h2>
+                    <a href="set-void-bloom.html" style="color:inherit; text-decoration:none;">
+                        Void Bloom
+                    </a>
+                </h2>
+
+                <p class="en">Dark resin tones with blooming colour and a mysterious depth.</p>
+                <p class="it">Toni scuri in resina con fioriture di colore e profondità misteriosa.</p>
+
+                <div class="product-actions">
+                    <a class="button secondary en" href="set-void-bloom.html">View details</a>
+                    <a class="button secondary it" href="set-void-bloom.html">Dettagli</a>
+
+                    <a class="button en" href="mailto:thelucklessmage@gmail.com?subject=Void Bloom dice set">Buy / Request</a>
+                    <a class="button it" href="mailto:thelucklessmage@gmail.com?subject=Set Void Bloom">Acquista / Richiedi</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- PRODUCT 3 -->
+        <article class="product-card">
+            <a href="set-frostbound-blood.html">
+                <img src="https://placehold.co/900x900?text=Frostbound+Blood" alt="Frostbound Blood handmade resin dice set">
+            </a>
+
+            <div class="product-content">
+                <h2>
+                    <a href="set-frostbound-blood.html" style="color:inherit; text-decoration:none;">
+                        Frostbound Blood
+                    </a>
+                </h2>
+
+                <p class="en">A cold and dramatic set inspired by ice, blood and old magic.</p>
+                <p class="it">Un set freddo e drammatico ispirato a ghiaccio, sangue e magia antica.</p>
+
+                <div class="product-actions">
+                    <a class="button secondary en" href="set-frostbound-blood.html">View details</a>
+                    <a class="button secondary it" href="set-frostbound-blood.html">Dettagli</a>
+
+                    <a class="button en" href="mailto:thelucklessmage@gmail.com?subject=Frostbound Blood dice set">Buy / Request</a>
+                    <a class="button it" href="mailto:thelucklessmage@gmail.com?subject=Set Frostbound Blood">Acquista / Richiedi</a>
+                </div>
+            </div>
+        </article>
+
+    </div>
+
+    <div class="back-link">
+        <a class="button secondary en" href="collection.html">Back to collection</a>
+        <a class="button secondary it" href="collection.html">Torna alla collezione</a>
+    </div>
+
+</section>
+
+<script>
+function setLang(lang){
+    localStorage.setItem("lang", lang);
+
+    document.querySelectorAll(".en").forEach(el=>{
+        el.style.display = (lang==="en") ? "block":"none";
+    });
+
+    document.querySelectorAll(".it").forEach(el=>{
+        el.style.display = (lang==="it") ? "block":"none";
+    });
+}
+
+window.onload = function(){
+    let lang = localStorage.getItem("lang") || "en";
+    setLang(lang);
+};
+</script>
+
+</body>
+</html>
