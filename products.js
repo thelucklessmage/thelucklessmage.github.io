@@ -3,7 +3,7 @@ const diceSets = [
         name: "Arcane Ember",
         image: "https://placehold.co/900x900?text=Arcane+Ember",
         page: "set-arcane-ember.html",
-        release: "2026-08-01T18:00:00+02:00",
+        release: "2026-06-12T18:00:00-05:40",
         description_en: "A warm, arcane set with deep ember tones and magical contrast.",
         description_it: "Un set caldo e arcano, con toni di brace e contrasti magici.",
         status_en: "Available from August 1st",
