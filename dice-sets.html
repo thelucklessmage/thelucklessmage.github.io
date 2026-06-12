@@ -190,6 +190,21 @@ section{
     margin:0;
     letter-spacing:0.04em;
 }
+
+.empty-drop{
+    grid-column:1 / -1;
+    border:1px solid #333;
+    background:rgba(18,22,33,0.92);
+    padding:35px;
+    text-align:center;
+    color:#cfc7b5;
+    border-radius:14px;
+}
+
+.empty-drop p{
+    margin:0;
+    line-height:1.6;
+}
     
 </style>
 
@@ -245,94 +260,14 @@ section{
 
 <section>
 
-    <section>
+  <section>
 
     <div class="drop-banner">
         <p class="en">Next dice set drop: August 1st, 2026 · 18:00 Swiss time</p>
         <p class="it">Prossimo drop di set: 1 agosto 2026 · 18:00 ora svizzera</p>
     </div>
 
-    <div class="product-grid">
-
-        <!-- PRODUCT 1 -->
-       <article class="product-card drop-product" data-release="2026-06-12T18:00:00-05:45">
-            <a href="set-arcane-ember.html">
-                <img src="https://placehold.co/900x900?text=Arcane+Ember" alt="Arcane Ember handmade resin dice set">
-            </a>
-
-            <div class="product-content">
-                <h2>
-                    <a href="set-arcane-ember.html" style="color:inherit; text-decoration:none;">
-                        Arcane Ember
-                    </a>
-                </h2>
-
-                <p class="en">A warm, arcane set with deep ember tones and magical contrast.</p>
-                <p class="it">Un set caldo e arcano, con toni di brace e contrasti magici.</p>
-
-                <div class="product-actions">
-                    <a class="button secondary en" href="set-arcane-ember.html">View details</a>
-                    <a class="button secondary it" href="set-arcane-ember.html">Dettagli</a>
-
-                    <a class="button en" href="mailto:thelucklessmage@gmail.com?subject=Arcane Ember dice set">Buy / Request</a>
-                    <a class="button it" href="mailto:thelucklessmage@gmail.com?subject=Set Arcane Ember">Acquista / Richiedi</a>
-                </div>
-            </div>
-        </article>
-
-        <!-- PRODUCT 2 -->
-        <article class="product-card">
-            <a href="set-void-bloom.html">
-                <img src="https://placehold.co/900x900?text=Void+Bloom" alt="Void Bloom handmade resin dice set">
-            </a>
-
-            <div class="product-content">
-                <h2>
-                    <a href="set-void-bloom.html" style="color:inherit; text-decoration:none;">
-                        Void Bloom
-                    </a>
-                </h2>
-
-                <p class="en">Dark resin tones with blooming colour and a mysterious depth.</p>
-                <p class="it">Toni scuri in resina con fioriture di colore e profondità misteriosa.</p>
-
-                <div class="product-actions">
-                    <a class="button secondary en" href="set-void-bloom.html">View details</a>
-                    <a class="button secondary it" href="set-void-bloom.html">Dettagli</a>
-
-                    <a class="button en" href="mailto:thelucklessmage@gmail.com?subject=Void Bloom dice set">Buy / Request</a>
-                    <a class="button it" href="mailto:thelucklessmage@gmail.com?subject=Set Void Bloom">Acquista / Richiedi</a>
-                </div>
-            </div>
-        </article>
-
-        <!-- PRODUCT 3 -->
-        <article class="product-card">
-            <a href="set-frostbound-blood.html">
-                <img src="https://placehold.co/900x900?text=Frostbound+Blood" alt="Frostbound Blood handmade resin dice set">
-            </a>
-
-            <div class="product-content">
-                <h2>
-                    <a href="set-frostbound-blood.html" style="color:inherit; text-decoration:none;">
-                        Frostbound Blood
-                    </a>
-                </h2>
-
-                <p class="en">A cold and dramatic set inspired by ice, blood and old magic.</p>
-                <p class="it">Un set freddo e drammatico ispirato a ghiaccio, sangue e magia antica.</p>
-
-                <div class="product-actions">
-                    <a class="button secondary en" href="set-frostbound-blood.html">View details</a>
-                    <a class="button secondary it" href="set-frostbound-blood.html">Dettagli</a>
-
-                    <a class="button en" href="mailto:thelucklessmage@gmail.com?subject=Frostbound Blood dice set">Buy / Request</a>
-                    <a class="button it" href="mailto:thelucklessmage@gmail.com?subject=Set Frostbound Blood">Acquista / Richiedi</a>
-                </div>
-            </div>
-        </article>
-
-    </div>
+    <div id="product-grid" class="product-grid"></div>
 
     <div class="back-link">
         <a class="button secondary en" href="collection.html">Back to collection</a>
@@ -340,21 +275,64 @@ section{
     </div>
 
 </section>
+<script src="products.js"></script>
 
 <script>
-function handleDrops(){
+function renderDiceSets(){
+    const grid = document.getElementById("product-grid");
     const now = new Date();
 
-    document.querySelectorAll(".drop-product").forEach(product => {
-        const releaseDate = new Date(product.dataset.release);
+    grid.innerHTML = "";
 
-        if(now < releaseDate){
-            product.style.display = "none";
-        } else {
-            product.style.display = "";
+    diceSets.forEach(product => {
+        const releaseDate = new Date(product.release);
+        const isReleased = now >= releaseDate;
+
+        if(!isReleased){
+            return;
         }
+
+        const card = document.createElement("article");
+        card.className = "product-card";
+
+        card.innerHTML = `
+            <a href="${product.page}">
+                <img src="${product.image}" alt="${product.name} handmade resin dice set">
+            </a>
+
+            <div class="product-content">
+                <h2>
+                    <a href="${product.page}" style="color:inherit; text-decoration:none;">
+                        ${product.name}
+                    </a>
+                </h2>
+
+                <p class="en">${product.description_en}</p>
+                <p class="it">${product.description_it}</p>
+
+                <div class="product-actions">
+                    <a class="button secondary en" href="${product.page}">View details</a>
+                    <a class="button secondary it" href="${product.page}">Dettagli</a>
+
+                    <a class="button en" href="mailto:thelucklessmage@gmail.com?subject=${encodeURIComponent(product.name + ' dice set')}">Buy / Request</a>
+                    <a class="button it" href="mailto:thelucklessmage@gmail.com?subject=${encodeURIComponent('Set ' + product.name)}">Acquista / Richiedi</a>
+                </div>
+            </div>
+        `;
+
+        grid.appendChild(card);
     });
-}    
+
+    if(grid.innerHTML.trim() === ""){
+        grid.innerHTML = `
+            <div class="empty-drop">
+                <p class="en">No dice sets are currently available. The next drop is coming soon.</p>
+                <p class="it">Al momento non ci sono set disponibili. Il prossimo drop arriverà presto.</p>
+            </div>
+        `;
+    }
+}
+
 function setLang(lang){
     localStorage.setItem("lang", lang);
 
@@ -368,7 +346,7 @@ function setLang(lang){
 }
 
 window.onload = function(){
-    handleDrops();
+    renderDiceSets();
 
     let lang = localStorage.getItem("lang") || "en";
     setLang(lang);
