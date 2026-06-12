@@ -11,247 +11,171 @@ body{
     font-family:Georgia, serif;
     background:#0f1117;
     color:#f5f0e6;
+    position:relative;
 }
 
-nav{
-    display:flex;
-    flex-direction:column;
-    align-items:stretch;
-    padding:15px 25px;
-    border-bottom:1px solid #222;
-    position:sticky;
-    top:0;
-    background:#0f1117;
-    z-index:10;
-}
-nav a{
-    color:#f5f0e6;
-    text-decoration:none;
-    margin:0 8px;
-    font-size:1rem;
+body::before{
+    content:"ᚱ ᚢ ᚾ ᛗ ᚨ ᚷ ᛖ";
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%) rotate(-18deg);
+    font-size:7rem;
+    letter-spacing:0.35em;
+    color:rgba(212,175,55,0.03);
+    white-space:nowrap;
+    pointer-events:none;
+    z-index:0;
 }
 
-nav a:hover{
-    color:#d4af37;
-}
-
-/* LANG */
-.lang button{
-    background:none;
-    border:1px solid #d4af37;
-    color:#d4af37;
-    padding:5px 10px;
-    margin-left:5px;
-    cursor:pointer;
-}
-
-.lang button:hover{
-    background:#d4af37;
-    color:#0f1117;
+nav,
+header,
+section{
+    position:relative;
+    z-index:1;
 }
 
 header{
     text-align:center;
-    padding:80px 20px;
+    padding:80px 20px 40px;
+    background:linear-gradient(to bottom, rgba(19,23,34,0.96), rgba(15,17,23,0.72));
 }
 
 h1{
     color:#d4af37;
-    font-size:3rem;
+    font-size:3.4rem;
+    margin:0 0 15px;
+    font-weight:normal;
+}
+
+.page-subtitle{
+    max-width:720px;
+    margin:0 auto;
+    color:#cfc7b5;
+    line-height:1.7;
+    font-size:1.1rem;
 }
 
 section{
-    max-width:1000px;
+    max-width:1150px;
     margin:auto;
-    padding:40px 20px;
+    padding:70px 20px;
 }
 
-/* GRID */
-.grid{
+.category-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
 }
 
-.card{
+.category-card{
     border:1px solid #333;
-    border-radius:10px;
+    border-radius:18px;
     overflow:hidden;
-    text-align:center;
-    padding:20px;
+    background:rgba(18,22,33,0.92);
     transition:0.3s;
 }
 
-.card:hover{
+.category-card:hover{
     border-color:#d4af37;
-    transform:scale(1.03);
+    transform:translateY(-5px);
 }
 
-.card img{
+.category-card img{
     width:100%;
-    border-radius:8px;
+    display:block;
+    aspect-ratio:4/5;
+    object-fit:cover;
 }
 
-/* LANGUAGE */
-.it{display:none;}
+.category-content{
+    padding:26px;
+}
 
-    /* ===== MOBILE PRO FIX ===== */
-@media (max-width: 768px){
+.category-content h2{
+    color:#f5f0e6;
+    margin:0 0 12px;
+    font-size:1.55rem;
+}
+
+.category-content p{
+    color:#cfc7b5;
+    line-height:1.6;
+    margin:0 0 22px;
+}
+
+.button{
+    display:inline-block;
+    padding:11px 18px;
+    border:1px solid #d4af37;
+    color:#d4af37;
+    text-decoration:none;
+    letter-spacing:0.04em;
+    transition:0.3s;
+}
+
+.button:hover{
+    background:#d4af37;
+    color:#0f1117;
+}
+
+.collection-note{
+    max-width:780px;
+    margin:60px auto 0;
+    text-align:center;
+    color:#cfc7b5;
+    line-height:1.8;
+    border-top:1px solid #333;
+    padding-top:35px;
+}
+
+.rune-divider{
+    text-align:center;
+    color:#d4af37;
+    letter-spacing:0.5em;
+    opacity:0.7;
+    margin-bottom:22px;
+}
+
+.it{
+    display:none;
+}
+
+@media (max-width:768px){
+
+    body::before{
+        font-size:3.8rem;
+        letter-spacing:0.2em;
+    }
+
+    header{
+        padding:60px 18px 30px;
+    }
 
     h1{
-        font-size:2.2rem !important;
+        font-size:2.4rem;
     }
 
-    nav{
-        flex-direction:column;
-        gap:10px;
-        text-align:center;
-    }
-
-    nav a{
-        display:inline-block;
-        margin:5px;
+    .page-subtitle{
+        font-size:1rem;
     }
 
     section{
-        padding:30px 15px;
+        padding:45px 15px;
     }
 
-    .grid{
-        grid-template-columns:1fr !important;
+    .category-grid{
+        grid-template-columns:1fr;
+        gap:24px;
     }
 
-    .card{
-        padding:15px;
+    .category-content{
+        padding:22px;
     }
-
-    .lang{
-        margin-top:5px;
-    }
-
-.nav-top{
-    display:grid;
-    grid-template-columns:1fr auto 1fr;
-    align-items:center;
-    width:100%;
 }
-
-.logo{
-    grid-column:2;
-    justify-self:center;
-}
-
-.logo img{
-    height:75px;
-}
-
-.lang{
-    grid-column:3;
-    justify-self:end;
-    margin-top:0;
-}
-
-nav a{
-    margin:0 4px;
-    font-size:0.82rem;
-}
-
-.nav-links{
-    flex-direction:row;
-    flex-wrap:nowrap;
-    justify-content:center;
-    gap:2px;
-    width:100%;
-    margin-top:8px;
-}
-
-.dropdown{
-    position:relative;
-}
-
-.dropdown-content{
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%);
-    border:1px solid #333;
-    margin-top:5px;
-}
-
-.dropdown-content a{
-    font-size:0.85rem;
-    padding:10px 12px;
-}
-
-.dropdown:hover .dropdown-content{
-    display:block;
-}
-    
-}
-
-.logo img{
-    height:75px;
-    width:auto;
-    filter: brightness(1.1);
-}    
-
-.nav-top{
-    display:grid;
-    grid-template-columns:1fr auto 1fr;
-    align-items:center;
-    width:100%;
-}
-
-.logo{
-    grid-column:2;
-    justify-self:center;
-}
-
-.lang{
-    grid-column:3;
-    justify-self:end;
-}
-
-.nav-links{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-    margin-top:10px;
-}
-
-.dropdown{
-    position:relative;
-    display:inline-block;
-}
-
-.dropdown-content{
-    display:none;
-    position:absolute;
-    background:#0f1117;
-    min-width:180px;
-    border:1px solid #333;
-    z-index:20;
-}
-
-.dropdown-content a{
-    display:block;
-    padding:12px 14px;
-    margin:0;
-    color:#f5f0e6;
-}
-
-.dropdown-content a:hover{
-    background:#151923;
-    color:#d4af37;
-}
-
-.dropdown:hover .dropdown-content{
-    display:block;
-}
-
-    
 </style>
-    <link rel="stylesheet" href="nav.css">
+
+<link rel="stylesheet" href="nav.css">
 </head>
 
 <body>
@@ -279,6 +203,7 @@ nav a{
                 <a href="chonk-dice.html">Chonk Dice</a>
             </div>
         </div>
+
         <a href="about.html">About</a>
         <a href="process.html">Process</a>
         <a href="contact.html">Contact</a>
@@ -288,37 +213,102 @@ nav a{
 <header>
     <h1 class="en">Collection</h1>
     <h1 class="it">Collezione</h1>
+
+    <p class="page-subtitle en">
+        Browse handmade resin dice by category. Each piece is crafted in small batches,
+        with attention to colour, clarity, balance and atmosphere.
+    </p>
+
+    <p class="page-subtitle it">
+        Esplora i dadi artigianali in resina per categoria. Ogni pezzo è realizzato in piccole serie,
+        con attenzione a colore, trasparenza, equilibrio e atmosfera.
+    </p>
 </header>
 
 <section>
 
-<div class="grid">
+    <div class="category-grid">
 
-    <div class="card">
-        <img src="https://placehold.co/400x400?text=Dice+Set">
-        <h3 class="en">Dice Sets</h3>
-        <h3 class="it">Set di dadi</h3>
+        <article class="category-card">
+            <img src="https://placehold.co/900x1100?text=Dice+Sets" alt="Handmade resin dice sets">
+
+            <div class="category-content">
+                <h2 class="en">Dice Sets</h2>
+                <h2 class="it">Set di dadi</h2>
+
+                <p class="en">
+                    Complete polyhedral sets designed for characters, campaigns and collectors.
+                </p>
+
+                <p class="it">
+                    Set poliedrici completi pensati per personaggi, campagne e collezionisti.
+                </p>
+
+                <a class="button en" href="dice-sets.html">View dice sets</a>
+                <a class="button it" href="dice-sets.html">Guarda i set</a>
+            </div>
+        </article>
+
+        <article class="category-card">
+            <img src="https://placehold.co/900x1100?text=Single+Dice" alt="Single handmade resin dice">
+
+            <div class="category-content">
+                <h2 class="en">Single Dice</h2>
+                <h2 class="it">Dadi singoli</h2>
+
+                <p class="en">
+                    Individual dice and special pieces for memorable rolls, display or collection.
+                </p>
+
+                <p class="it">
+                    Dadi singoli e pezzi speciali per tiri memorabili, esposizione o collezione.
+                </p>
+
+                <a class="button en" href="single-dice.html">View single dice</a>
+                <a class="button it" href="single-dice.html">Guarda i singoli</a>
+            </div>
+        </article>
+
+        <article class="category-card">
+            <img src="https://placehold.co/900x1100?text=Chonk+Dice" alt="Oversized handmade resin chonk dice">
+
+            <div class="category-content">
+                <h2 class="en">Chonk Dice</h2>
+                <h2 class="it">Dadi chonk</h2>
+
+                <p class="en">
+                    Oversized resin dice made as statement pieces for the table, shelf or altar.
+                </p>
+
+                <p class="it">
+                    Dadi oversize in resina pensati come pezzi scenici per il tavolo, la mensola o l’altare.
+                </p>
+
+                <a class="button en" href="chonk-dice.html">View chonk dice</a>
+                <a class="button it" href="chonk-dice.html">Guarda i chonk</a>
+            </div>
+        </article>
+
     </div>
 
-    <div class="card">
-        <img src="https://placehold.co/400x400?text=27mm">
-        <h3 class="en">Single Dice 27mm</h3>
-        <h3 class="it">Dadi singoli 27mm</h3>
-    </div>
+    <div class="collection-note">
 
-    <div class="card">
-        <img src="https://placehold.co/400x400?text=D20+32mm">
-        <h3 class="en">D20 32mm</h3>
-        <h3 class="it">D20 32mm</h3>
-    </div>
+        <div class="rune-divider">ᚱ ᚢ ᚾ</div>
 
-    <div class="card">
-        <img src="https://placehold.co/400x400?text=Chonk+62mm">
-        <h3 class="en">Chonk Dice 62mm</h3>
-        <h3 class="it">Dado Chonk 62mm</h3>
-    </div>
+        <p class="en">
+            Availability may change over time. Many pieces are unique or made in very small batches.
+            For custom requests, commissions or specific colour ideas, feel free to get in touch.
+        </p>
 
-</div>
+        <p class="it">
+            La disponibilità può variare nel tempo. Molti pezzi sono unici o realizzati in piccolissime serie.
+            Per richieste personalizzate, commissioni o idee cromatiche specifiche, puoi contattarmi.
+        </p>
+
+        <a class="button en" href="contact.html">Contact me</a>
+        <a class="button it" href="contact.html">Contattami</a>
+
+    </div>
 
 </section>
 
