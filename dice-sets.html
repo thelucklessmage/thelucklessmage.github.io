@@ -285,7 +285,7 @@ function renderDiceSets(){
     grid.innerHTML = "";
 
     diceSets.forEach(product => {
-        const releaseDate = new Date(product.release);
+       const releaseDate = new Date(product.release.replace(" ", "T"));
         const isReleased = now >= releaseDate;
 
         if(!isReleased){
