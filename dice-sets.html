@@ -277,31 +277,30 @@ function renderDiceSets(){
         const card = document.createElement("article");
         card.className = "product-card";
 
-        card.innerHTML = `
-            <a href="${product.page}">
-                <img src="${product.image}" alt="${product.name} handmade resin dice set">
+      card.innerHTML = `
+    <a href="product.html?id=${product.id}">
+        <img src="${product.image}" alt="${product.name} handmade resin dice set">
+    </a>
+
+    <div class="product-content">
+        <h2>
+            <a href="product.html?id=${product.id}" style="color:inherit; text-decoration:none;">
+                ${product.name}
             </a>
+        </h2>
 
-            <div class="product-content">
-                <h2>
-                    <a href="${product.page}" style="color:inherit; text-decoration:none;">
-                        ${product.name}
-                    </a>
-                </h2>
+        <p class="en">${product.short_en}</p>
+        <p class="it">${product.short_it}</p>
 
-                <p class="en">${product.description_en}</p>
-                <p class="it">${product.description_it}</p>
+        <div class="product-actions">
+            <a class="button secondary en" href="product.html?id=${product.id}">View details</a>
+            <a class="button secondary it" href="product.html?id=${product.id}">Dettagli</a>
 
-                <div class="product-actions">
-                    <a class="button secondary en" href="${product.page}">View details</a>
-                    <a class="button secondary it" href="${product.page}">Dettagli</a>
-
-                    <a class="button en" href="mailto:thelucklessmage@gmail.com?subject=${encodeURIComponent(product.name + ' dice set')}">Buy / Request</a>
-                    <a class="button it" href="mailto:thelucklessmage@gmail.com?subject=${encodeURIComponent('Set ' + product.name)}">Acquista / Richiedi</a>
-                </div>
-            </div>
-        `;
-
+            <a class="button en" href="mailto:thelucklessmage@gmail.com?subject=${encodeURIComponent(product.name + ' dice set')}">Buy / Request</a>
+            <a class="button it" href="mailto:thelucklessmage@gmail.com?subject=${encodeURIComponent('Set ' + product.name)}">Acquista / Richiedi</a>
+        </div>
+    </div>
+`;
         grid.appendChild(card);
     });
 
