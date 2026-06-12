@@ -259,6 +259,8 @@ section{
     </p>
 </header>
 
+<section id="drop-collection"></section>
+
 <section>
 
     <div class="category-grid">
@@ -345,8 +347,34 @@ section{
     </div>
 
 </section>
-
+<script src="drop.js"></script>
 <script>
+    function renderDropBanner(targetId){
+    const target = document.getElementById(targetId);
+
+    if(!target || typeof dropInfo === "undefined" || !dropInfo.showDrop){
+        if(target){
+            target.style.display = "none";
+        }
+        return;
+    }
+
+    target.innerHTML = `
+        <div class="drop-announcement">
+            <h2 class="en">${dropInfo.title_en}</h2>
+            <h2 class="it">${dropInfo.title_it}</h2>
+
+            <p class="en">${dropInfo.date_en}</p>
+            <p class="it">${dropInfo.date_it}</p>
+
+            <p class="en">${dropInfo.text_en}</p>
+            <p class="it">${dropInfo.text_it}</p>
+
+            <a class="en" href="${dropInfo.link}">View collection →</a>
+            <a class="it" href="${dropInfo.link}">Guarda la collezione →</a>
+        </div>
+    `;
+}
 function setLang(lang){
     localStorage.setItem("lang", lang);
 
@@ -360,6 +388,8 @@ function setLang(lang){
 }
 
 window.onload = function(){
+    renderDropBanner("drop-collection");
+
     let lang = localStorage.getItem("lang") || "en";
     setLang(lang);
 };
