@@ -11,241 +11,345 @@ body{
     font-family:Georgia, serif;
     background:#0f1117;
     color:#f5f0e6;
+    position:relative;
 }
 
-/* NAV */
-nav{
+/* Fixed subtle rune background */
+body::before{
+    content:"ᚱ ᚢ ᚾ ᛗ ᚨ ᚷ ᛖ";
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%) rotate(-18deg);
+    font-size:7rem;
+    letter-spacing:0.35em;
+    color:rgba(212,175,55,0.035);
+    white-space:nowrap;
+    pointer-events:none;
+    z-index:0;
+}
+
+nav,
+.hero,
+section{
+    position:relative;
+    z-index:1;
+}
+
+.hero{
+    min-height:70vh;
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    padding:15px 25px;
-    border-bottom:1px solid #222;
-    position:sticky;
-    top:0;
-    background:#0f1117;
+    justify-content:center;
+    text-align:center;
+    padding:80px 20px;
+    background:
+        radial-gradient(circle at center, rgba(212,175,55,0.12), transparent 35%),
+        linear-gradient(to bottom, rgba(19,23,34,0.96), rgba(15,17,23,0.82));
 }
 
-nav a{
-    color:#f5f0e6;
-    text-decoration:none;
-    margin:0 8px;
-    font-size:1rem;
+.hero-content{
+    max-width:850px;
 }
 
-nav a:hover{
+.hero-mark{
     color:#d4af37;
+    letter-spacing:0.55em;
+    font-size:0.9rem;
+    margin-bottom:25px;
+    opacity:0.75;
 }
 
-/* LANG BUTTON */
-.lang button{
-    background:none;
+h1{
+    color:#d4af37;
+    font-size:4rem;
+    margin:0 0 20px;
+    font-weight:normal;
+}
+
+.hero p{
+    max-width:720px;
+    margin:0 auto 35px;
+    font-size:1.25rem;
+    line-height:1.7;
+    color:#d8d0bf;
+}
+
+.hero-actions{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.button{
+    display:inline-block;
+    padding:12px 22px;
     border:1px solid #d4af37;
     color:#d4af37;
-    padding:5px 10px;
-    cursor:pointer;
-    margin-left:5px;
+    text-decoration:none;
+    letter-spacing:0.05em;
+    transition:0.3s;
 }
 
-.lang button:hover{
+.button:hover{
     background:#d4af37;
     color:#0f1117;
 }
 
-/* HERO */
-header{
-    text-align:center;
-    padding:120px 20px;
-    background:linear-gradient(to bottom,#131722,#0f1117);
-}
-
-h1{
-    font-size:4rem;
-    color:#d4af37;
-    margin-bottom:10px;
-}
-
-section{
-    max-width:900px;
-    margin:auto;
-    padding:60px 20px;
-}
-
-/* LANGUAGE */
-.it{display:none;}
-    
-/* ===== MOBILE PRO FIX ===== */
-@media (max-width: 768px){
-
-    h1{
-        font-size:2.2rem !important;
-    }
-
-    nav{
-        flex-direction:column;
-        gap:10px;
-        text-align:center;
-    }
-
-    nav a{
-        display:inline-block;
-        margin:5px;
-    }
-
-    section{
-        padding:30px 15px;
-    }
-
-    .grid{
-        grid-template-columns:1fr !important;
-    }
-
-    .card{
-        padding:15px;
-    }
-
-    .lang{
-        margin-top:0px;
-    }
-
-.nav-links{
-    flex-direction:row;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:6px;
-}
-
-.dropdown{
-    position:relative;
-}
-
-.dropdown-content{
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%);
-    border:1px solid #333;
-    margin-top:5px;
-}
-
-.dropdown:hover .dropdown-content{
-    display:block;
-}
-
-nav a{
-    margin:0 4px;
-    font-size:0.82rem;
-}
-
-.nav-links{
-    flex-direction:row;
-    flex-wrap:nowrap;
-    justify-content:center;
-    gap:2px;
-    width:100%;
-    margin-top:8px;
-}
-
-.dropdown-content a{
-    font-size:0.85rem;
-    padding:10px 12px;
-}    
-
-..nav-top{
-    display:grid;
-    grid-template-columns:1fr auto 1fr;
-    align-items:center;
-    width:100%;
-}
-
-.logo{
-    grid-column:2;
-    justify-self:center;
-}
-
-.lang{
-    grid-column:3;
-    justify-self:end;
-    margin-top:0;
-}
-    
-}
-    /* =====  FINE MOBILE PRO FIX ===== */
-
-/* LOGO */
-.logo img{
-    height:75px;
-    width:auto;
-    filter: brightness(1.1);
-}
-
-
- .nav-links{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.dropdown{
-    position:relative;
-    display:inline-block;
-}
-
-.dropdown-content{
-    display:none;
-    position:absolute;
-    background:#0f1117;
-    min-width:180px;
-    border:1px solid #333;
-    z-index:20;
-}
-
-.dropdown-content a{
-    display:block;
-    padding:12px 14px;
-    margin:0;
+.button.secondary{
+    border-color:#555;
     color:#f5f0e6;
 }
 
-.dropdown-content a:hover{
-    background:#151923;
+.button.secondary:hover{
+    border-color:#d4af37;
+    background:transparent;
     color:#d4af37;
 }
 
-.dropdown:hover .dropdown-content{
-    display:block;
-}  
-
-nav{
-    flex-direction:column;
-    align-items:stretch;
+section{
+    max-width:1150px;
+    margin:auto;
+    padding:80px 20px;
 }
 
-.nav-top{
+.section-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:20px;
+    margin-bottom:35px;
+}
+
+.section-heading h2{
+    color:#d4af37;
+    font-size:2.2rem;
+    margin:0;
+}
+
+.section-heading p{
+    max-width:520px;
+    margin:0;
+    color:#cfc7b5;
+    line-height:1.6;
+}
+
+.intro-grid{
     display:grid;
-    grid-template-columns:1fr auto 1fr;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
     align-items:center;
+}
+
+.intro-text{
+    line-height:1.8;
+    color:#d8d0bf;
+}
+
+.intro-text h2{
+    color:#f5f0e6;
+    font-size:2rem;
+    margin-top:0;
+}
+
+.intro-panel{
+    border:1px solid #333;
+    border-radius:16px;
+    padding:35px;
+    background:rgba(18,22,33,0.92);
+    backdrop-filter:blur(4px);
+}
+
+.intro-panel h3{
+    margin-top:0;
+    color:#f5f0e6;
+    font-size:1.5rem;
+}
+
+.intro-panel ul{
+    padding-left:20px;
+    line-height:1.9;
+    color:#cfc7b5;
+}
+
+.latest-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+}
+
+.product-card{
+    border:1px solid #333;
+    border-radius:16px;
+    overflow:hidden;
+    background:rgba(18,22,33,0.92);
+    transition:0.3s;
+}
+
+.product-card:hover{
+    border-color:#d4af37;
+    transform:translateY(-4px);
+}
+
+.product-card img{
     width:100%;
+    display:block;
+    aspect-ratio:1/1;
+    object-fit:cover;
 }
 
-.logo{
-    grid-column:2;
-    justify-self:center;
+.product-info{
+    padding:22px;
 }
 
-.lang{
-    grid-column:3;
-    justify-self:end;
+.product-info h3{
+    margin:0 0 10px;
+    color:#f5f0e6;
 }
 
-.nav-links{
+.product-info p{
+    margin:0 0 18px;
+    color:#cfc7b5;
+    line-height:1.5;
+}
+
+.product-info a{
+    color:#d4af37;
+    text-decoration:none;
+}
+
+.process-preview{
+    border-top:1px solid #333;
+    border-bottom:1px solid #333;
+    text-align:center;
+    max-width:none;
+    background:rgba(15,17,23,0.72);
+}
+
+.process-preview p{
+    max-width:760px;
+    margin:0 auto 30px;
+    color:#cfc7b5;
+    line-height:1.8;
+}
+
+.process-preview h2{
+    color:#f5f0e6;
+    font-size:2rem;
+}
+
+.cta{
+    text-align:center;
+    padding:90px 20px;
+}
+
+.cta h2{
+    color:#d4af37;
+    font-size:2.4rem;
+    margin-bottom:15px;
+}
+
+.cta p{
+    max-width:650px;
+    margin:0 auto 30px;
+    color:#cfc7b5;
+    line-height:1.7;
+}
+
+.rune-divider{
+    text-align:center;
+    color:#d4af37;
+    letter-spacing:0.5em;
+    opacity:0.7;
+    margin:20px 0;
+}
+
+.social-links{
     display:flex;
     justify-content:center;
+    gap:18px;
+    margin-top:30px;
+}
+
+.social-links a{
+    width:42px;
+    height:42px;
+    border:1px solid #d4af37;
+    border-radius:50%;
+    display:flex;
     align-items:center;
-    gap:10px;
-    margin-top:10px;
-}    
-    
+    justify-content:center;
+    color:#d4af37;
+    transition:0.3s;
+}
+
+.social-links a:hover{
+    background:#d4af37;
+    color:#0f1117;
+    transform:translateY(-3px);
+}
+
+.social-links svg{
+    width:21px;
+    height:21px;
+    fill:currentColor;
+}
+
+.it{
+    display:none;
+}
+
+@media (max-width:768px){
+
+    body::before{
+        font-size:3.8rem;
+        letter-spacing:0.2em;
+        opacity:0.85;
+    }
+
+    .hero{
+        min-height:auto;
+        padding:70px 20px;
+    }
+
+    h1{
+        font-size:2.6rem;
+    }
+
+    .hero p{
+        font-size:1rem;
+    }
+
+    section{
+        padding:55px 15px;
+    }
+
+    .section-heading{
+        display:block;
+    }
+
+    .section-heading h2{
+        font-size:1.9rem;
+        margin-bottom:15px;
+    }
+
+    .intro-grid{
+        grid-template-columns:1fr;
+        gap:25px;
+    }
+
+    .latest-grid{
+        grid-template-columns:1fr;
+    }
+
+    .cta h2{
+        font-size:2rem;
+    }
+}
 </style>
-    <link rel="stylesheet" href="nav.css">
+
+<link rel="stylesheet" href="nav.css">
 </head>
 
 <body>
@@ -264,7 +368,6 @@ nav{
 
     <div class="nav-links">
         <a href="index.html">Home</a>
-      
 
         <div class="dropdown">
             <a href="collection.html">Collection ▾</a>
@@ -274,51 +377,224 @@ nav{
                 <a href="chonk-dice.html">Chonk Dice</a>
             </div>
         </div>
-  <a href="about.html">About</a>
-        <a href="process.html">Process</a>        
+
+        <a href="about.html">About</a>
+        <a href="process.html">Process</a>
         <a href="contact.html">Contact</a>
     </div>
 </nav>
 
-<header>
-    <h1>The Luckless Mage</h1>
+<header class="hero">
+    <div class="hero-content">
 
-    <p class="en">
-        Handmade resin dice forged for adventurers, storytellers and seekers of fortune.
-    </p>
+        <div class="hero-mark">ᚱ ᚢ ᚾ</div>
 
-    <p class="it">
-        Dadi artigianali in resina forgiati per avventurieri, narratori e cercatori di fortuna.
-    </p>
+        <h1>The Luckless Mage</h1>
+
+        <p class="en">
+            Handmade resin dice crafted in Ticino, Switzerland — designed for adventurers,
+            storytellers, collectors and those who believe every roll should carry a little magic.
+        </p>
+
+        <p class="it">
+            Dadi artigianali in resina creati in Ticino, Svizzera — pensati per avventurieri,
+            narratori, collezionisti e per chi crede che ogni tiro debba portare con sé un po’ di magia.
+        </p>
+
+        <div class="hero-actions">
+            <a class="button en" href="collection.html">Explore the collection</a>
+            <a class="button it" href="collection.html">Esplora la collezione</a>
+
+            <a class="button secondary en" href="process.html">Discover the process</a>
+            <a class="button secondary it" href="process.html">Scopri il processo</a>
+        </div>
+
+    </div>
 </header>
 
 <section>
-    <h2 class="en">Welcome</h2>
-    <h2 class="it">Benvenuto</h2>
+    <div class="intro-grid">
+
+        <div class="intro-text">
+            <h2 class="en">A small dice atelier with a designer’s eye.</h2>
+            <h2 class="it">Un piccolo atelier di dadi con uno sguardo da designer.</h2>
+
+            <p class="en">
+                The Luckless Mage combines resin craft, visual composition and tabletop storytelling.
+                Each piece is made by hand, from the first colour idea to the final polish.
+            </p>
+
+            <p class="it">
+                The Luckless Mage unisce artigianato in resina, composizione visiva e narrazione da gioco di ruolo.
+                Ogni pezzo è realizzato a mano, dalla prima idea cromatica alla lucidatura finale.
+            </p>
+
+            <p class="en">
+                No two dice are ever exactly alike. Variations, depth, inclusions and small traces of the process
+                are part of what makes each piece unique.
+            </p>
+
+            <p class="it">
+                Nessun dado è mai identico a un altro. Variazioni, profondità, inclusioni e piccole tracce del processo
+                fanno parte di ciò che rende ogni pezzo unico.
+            </p>
+        </div>
+
+        <div class="intro-panel">
+            <h3 class="en">What you will find</h3>
+            <h3 class="it">Cosa troverai</h3>
+
+            <ul class="en">
+                <li>Complete handmade dice sets</li>
+                <li>Single dice and statement pieces</li>
+                <li>Oversized chonk dice</li>
+                <li>Small batches and unique colourways</li>
+            </ul>
+
+            <ul class="it">
+                <li>Set completi di dadi artigianali</li>
+                <li>Dadi singoli e pezzi speciali</li>
+                <li>Dadi chonk oversize</li>
+                <li>Piccole serie e combinazioni cromatiche uniche</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <div class="section-heading">
+        <h2 class="en">Latest pieces</h2>
+        <h2 class="it">Ultimi pezzi</h2>
+
+        <p class="en">
+            A preview of recent creations. These cards will later link directly to product pages or category pages.
+        </p>
+
+        <p class="it">
+            Una selezione delle creazioni più recenti. Queste schede potranno poi collegarsi direttamente ai prodotti o alle categorie.
+        </p>
+    </div>
+
+    <div class="latest-grid">
+
+        <div class="product-card">
+            <img src="https://placehold.co/800x800?text=Dice+Set" alt="Handmade resin dice set">
+
+            <div class="product-info">
+                <h3 class="en">Arcane Dice Set</h3>
+                <h3 class="it">Set arcano</h3>
+
+                <p class="en">A complete resin dice set with layered colour and magical depth.</p>
+                <p class="it">Un set completo in resina con colore stratificato e profondità magica.</p>
+
+                <a class="en" href="dice-sets.html">View dice sets →</a>
+                <a class="it" href="dice-sets.html">Guarda i set →</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://placehold.co/800x800?text=Single+Dice" alt="Single handmade resin die">
+
+            <div class="product-info">
+                <h3 class="en">Single Dice</h3>
+                <h3 class="it">Dadi singoli</h3>
+
+                <p class="en">Individual pieces for collectors, special rolls or character themes.</p>
+                <p class="it">Pezzi singoli per collezionisti, tiri speciali o temi personaggio.</p>
+
+                <a class="en" href="single-dice.html">View single dice →</a>
+                <a class="it" href="single-dice.html">Guarda i dadi singoli →</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://placehold.co/800x800?text=Chonk+Dice" alt="Oversized handmade resin chonk die">
+
+            <div class="product-info">
+                <h3 class="en">Chonk Dice</h3>
+                <h3 class="it">Dadi chonk</h3>
+
+                <p class="en">Oversized resin dice designed as bold table pieces and display objects.</p>
+                <p class="it">Dadi oversize in resina pensati come pezzi scenici e oggetti da esposizione.</p>
+
+                <a class="en" href="chonk-dice.html">View chonk dice →</a>
+                <a class="it" href="chonk-dice.html">Guarda i chonk →</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="process-preview">
+
+    <div class="rune-divider">ᚱ ᚢ ᚾ</div>
+
+    <h2 class="en">Made slowly. Finished by hand.</h2>
+    <h2 class="it">Creati lentamente. Rifiniti a mano.</h2>
 
     <p class="en">
-        Explore handcrafted resin dice made in Switzerland for tabletop RPGs.
+        Every piece goes through a careful process: concept, resin casting, curing, sanding,
+        polishing, inking and final inspection. The result is not mass-produced perfection,
+        but intentional craft.
     </p>
 
     <p class="it">
-        Esplora dadi artigianali in resina creati in Svizzera per giochi di ruolo da tavolo.
+        Ogni pezzo attraversa un processo attento: concept, colata della resina, indurimento,
+        levigatura, lucidatura, colorazione dei numeri e controllo finale. Il risultato non è perfezione industriale,
+        ma artigianato intenzionale.
     </p>
+
+    <a class="button en" href="process.html">Read about the process</a>
+    <a class="button it" href="process.html">Leggi il processo</a>
+
+</section>
+
+<section class="cta">
+
+    <h2 class="en">Looking for a custom piece?</h2>
+    <h2 class="it">Cerchi un pezzo personalizzato?</h2>
+
+    <p class="en">
+        Custom commissions and small batches may be available depending on time, materials and current production.
+    </p>
+
+    <p class="it">
+        Commissioni personalizzate e piccole serie possono essere disponibili in base al tempo, ai materiali e alla produzione in corso.
+    </p>
+
+    <a class="button en" href="contact.html">Get in touch</a>
+    <a class="button it" href="contact.html">Contattami</a>
+
+    <div class="social-links">
+        <a href="https://www.instagram.com/thelucklessmage" target="_blank" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm0 2h10c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3zm5 3.2A4.8 4.8 0 1 0 12 16.8 4.8 4.8 0 0 0 12 7.2zm0 2A2.8 2.8 0 1 1 9.2 12 2.8 2.8 0 0 1 12 9.2zM17.3 6.5a1.1 1.1 0 1 0 1.1 1.1 1.1 1.1 0 0 0-1.1-1.1z"/>
+            </svg>
+        </a>
+
+        <a href="mailto:thelucklessmage@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 5h18c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V7c0-1.1.9-2 2-2zm9 8.2L3.8 7H3v.6l9 6.8 9-6.8V7h-.8L12 13.2z"/>
+            </svg>
+        </a>
+    </div>
+
 </section>
 
 <script>
 function setLang(lang){
     localStorage.setItem("lang", lang);
 
-    document.querySelectorAll(".en").forEach(el => {
-        el.style.display = (lang === "en") ? "block" : "none";
+    document.querySelectorAll(".en").forEach(el=>{
+        el.style.display = (lang==="en") ? "block":"none";
     });
 
-    document.querySelectorAll(".it").forEach(el => {
-        el.style.display = (lang === "it") ? "block" : "none";
+    document.querySelectorAll(".it").forEach(el=>{
+        el.style.display = (lang==="it") ? "block":"none";
     });
 }
 
-// auto-load language
 window.onload = function(){
     let lang = localStorage.getItem("lang") || "en";
     setLang(lang);
