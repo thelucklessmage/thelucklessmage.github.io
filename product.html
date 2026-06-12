@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product - The Luckless Mage</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Georgia, serif;
+    background:#0f1117;
+    color:#f5f0e6;
+    position:relative;
+}
+
+body::before{
+    content:"ᚱ ᚢ ᚾ ᛗ ᚨ ᚷ ᛖ";
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%) rotate(-18deg);
+    font-size:7rem;
+    letter-spacing:0.35em;
+    color:rgba(212,175,55,0.03);
+    white-space:nowrap;
+    pointer-events:none;
+    z-index:0;
+}
+
+nav,
+main{
+    position:relative;
+    z-index:1;
+}
+
+main{
+    max-width:1150px;
+    margin:auto;
+    padding:70px 20px;
+}
+
+.product-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:start;
+}
+
+.main-image{
+    border:1px solid #333;
+    border-radius:18px;
+    overflow:hidden;
+    background:rgba(18,22,33,0.92);
+}
+
+.main-image img{
+    width:100%;
+    display:block;
+    aspect-ratio:1/1;
+    object-fit:cover;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-top:14px;
+}
+
+.gallery img{
+    width:100%;
+    display:block;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    border:1px solid #333;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.gallery img:hover{
+    border-color:#d4af37;
+}
+
+.product-info{
+    border:1px solid #333;
+    border-radius:18px;
+    padding:34px;
+    background:rgba(18,22,33,0.92);
+}
+
+.product-info h1{
+    color:#d4af37;
+    font-size:3rem;
+    font-weight:normal;
+    margin:0 0 12px;
+}
+
+.status{
+    color:#cfc7b5;
+    margin-bottom:18px;
+}
+
+.price{
+    font-size:1.35rem;
+    color:#f5f0e6;
+    margin:20px 0;
+}
+
+.description{
+    color:#cfc7b5;
+    line-height:1.8;
+    margin-bottom:28px;
+}
+
+.details{
+    border-top:1px solid #333;
+    padding-top:24px;
+    margin-top:24px;
+}
+
+.details h2{
+    color:#f5f0e6;
+    font-size:1.4rem;
+}
+
+.details ul{
+    color:#cfc7b5;
+    line-height:1.8;
+    padding-left:20px;
+}
+
+.actions{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:28px;
+}
+
+.button{
+    display:inline-block;
+    padding:12px 22px;
+    border:1px solid #d4af37;
+    color:#d4af37;
+    text-decoration:none;
+    letter-spacing:0.05em;
+    transition:0.3s;
+}
+
+.button:hover{
+    background:#d4af37;
+    color:#0f1117;
+}
+
+.button.secondary{
+    border-color:#555;
+    color:#f5f0e6;
+}
+
+.button.secondary:hover{
+    border-color:#d4af37;
+    color:#d4af37;
+    background:transparent;
+}
+
+.not-found{
+    text-align:center;
+    border:1px solid #333;
+    border-radius:18px;
+    padding:50px 25px;
+    background:rgba(18,22,33,0.92);
+}
+
+.it{
+    display:none;
+}
+
+@media (max-width:768px){
+
+    body::before{
+        font-size:3.8rem;
+        letter-spacing:0.2em;
+    }
+
+    main{
+        padding:45px 15px;
+    }
+
+    .product-layout{
+        grid-template-columns:1fr;
+        gap:28px;
+    }
+
+    .product-info{
+        padding:26px;
+    }
+
+    .product-info h1{
+        font-size:2.3rem;
+    }
+}
+</style>
+
+<link rel="stylesheet" href="nav.css">
+</head>
+
+<body>
+
+<nav>
+    <div class="nav-top">
+        <div class="logo">
+            <img src="logo.png" alt="The Luckless Mage">
+        </div>
+
+        <div class="lang">
+            <button onclick="setLang('en')">EN</button>
+            <button onclick="setLang('it')">IT</button>
+        </div>
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+
+        <div class="dropdown">
+            <a href="collection.html">Collection ▾</a>
+            <div class="dropdown-content">
+                <a href="dice-sets.html">Dice Sets</a>
+                <a href="single-dice.html">Single Dice</a>
+                <a href="chonk-dice.html">Chonk Dice</a>
+            </div>
+        </div>
+
+        <a href="about.html">About</a>
+        <a href="process.html">Process</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</nav>
+
+<main id="product-page"></main>
+
+<script src="products.js"></script>
+
+<script>
+function getProductId(){
+    const params = new URLSearchParams(window.location.search);
+    return params.get("id");
+}
+
+function renderProduct(){
+    const productId = getProductId();
+    const container = document.getElementById("product-page");
+
+    const product = diceSets.find(item => item.id === productId);
+
+    if(!product){
+        container.innerHTML = `
+            <div class="not-found">
+                <h1 class="en">Product not found</h1>
+                <h1 class="it">Prodotto non trovato</h1>
+
+                <p class="en">This product may no longer be available or the link may be incorrect.</p>
+                <p class="it">Questo prodotto potrebbe non essere più disponibile o il link potrebbe non essere corretto.</p>
+
+                <a class="button en" href="dice-sets.html">Back to dice sets</a>
+                <a class="button it" href="dice-sets.html">Torna ai set</a>
+            </div>
+        `;
+        return;
+    }
+
+    const galleryImages = product.gallery.map(image => `
+        <img src="${image}" alt="${product.name}" onclick="changeMainImage('${image}')">
+    `).join("");
+
+    const detailsEn = product.details_en.map(item => `<li>${item}</li>`).join("");
+    const detailsIt = product.details_it.map(item => `<li>${item}</li>`).join("");
+
+    container.innerHTML = `
+        <div class="product-layout">
+
+            <div>
+                <div class="main-image">
+                    <img id="main-product-image" src="${product.image}" alt="${product.name}">
+                </div>
+
+                <div class="gallery">
+                    ${galleryImages}
+                </div>
+            </div>
+
+            <div class="product-info">
+                <h1>${product.name}</h1>
+
+                <p class="status en">${product.status_en}</p>
+                <p class="status it">${product.status_it}</p>
+
+                <div class="price">${product.price}</div>
+
+                <p class="description en">${product.description_en}</p>
+                <p class="description it">${product.description_it}</p>
+
+                <div class="details">
+                    <h2 class="en">Details</h2>
+                    <h2 class="it">Dettagli</h2>
+
+                    <ul class="en">${detailsEn}</ul>
+                    <ul class="it">${detailsIt}</ul>
+                </div>
+
+                <div class="actions">
+                    <a class="button en" href="mailto:thelucklessmage@gmail.com?subject=${encodeURIComponent(product.name + ' dice set')}">Buy / Request</a>
+                    <a class="button it" href="mailto:thelucklessmage@gmail.com?subject=${encodeURIComponent('Set ' + product.name)}">Acquista / Richiedi</a>
+
+                    <a class="button secondary en" href="dice-sets.html">Back to dice sets</a>
+                    <a class="button secondary it" href="dice-sets.html">Torna ai set</a>
+                </div>
+            </div>
+
+        </div>
+    `;
+}
+
+function changeMainImage(image){
+    document.getElementById("main-product-image").src = image;
+}
+
+function setLang(lang){
+    localStorage.setItem("lang", lang);
+
+    document.querySelectorAll(".en").forEach(el=>{
+        el.style.display = (lang==="en") ? "block":"none";
+    });
+
+    document.querySelectorAll(".it").forEach(el=>{
+        el.style.display = (lang==="it") ? "block":"none";
+    });
+}
+
+window.onload = function(){
+    renderProduct();
+
+    let lang = localStorage.getItem("lang") || "en";
+    setLang(lang);
+};
+</script>
+
+</body>
+</html>
