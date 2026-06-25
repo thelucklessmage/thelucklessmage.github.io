@@ -373,51 +373,53 @@ textarea{
             <h2 class="en">Send a message</h2>
             <h2 class="it">Invia un messaggio</h2>
 
-            <form action="mailto:thelucklessmage@gmail.com" method="POST" enctype="text/plain">
+           <form action="https://api.staticforms.dev/submit" method="POST">
 
-                <div class="form-row">
-                    <label class="en" for="name">Name</label>
-                    <label class="it" for="name">Nome</label>
-                    <input type="text" id="name" name="Name" required>
-                </div>
+    <input type="hidden" name="apiKey" value="sf_738378711996c68238372476">
 
-                <div class="form-row">
-                    <label class="en" for="email">Email</label>
-                    <label class="it" for="email">Email</label>
-                    <input type="email" id="email" name="Email" required>
-                </div>
+    <input type="hidden" name="subject" value="TheLucklessMage submission">
 
-                <div class="form-row">
-                    <label class="en" for="request">Request type</label>
-                    <label class="it" for="request">Tipo di richiesta</label>
+    <div class="form-row">
+        <label class="en" for="name">Name</label>
+        <label class="it" for="name">Nome</label>
+        <input type="text" id="name" name="name" required>
+    </div>
 
-                    <select id="request" name="Request type">
-                        <option value="Available dice">Available dice / Dadi disponibili</option>
-                        <option value="Custom commission">Custom commission / Commissione personalizzata</option>
-                        <option value="Drop information">Drop information / Informazioni drop</option>
-                        <option value="Other">Other / Altro</option>
-                    </select>
-                </div>
+    <div class="form-row">
+        <label class="en" for="email">Email</label>
+        <label class="it" for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+    </div>
 
-                <div class="form-row">
-                    <label class="en" for="message">Message</label>
-                    <label class="it" for="message">Messaggio</label>
-                    <textarea id="message" name="Message" required></textarea>
-                </div>
+    <div class="form-row">
+        <label class="en" for="request">Request type</label>
+        <label class="it" for="request">Tipo di richiesta</label>
 
-                <button class="button en" type="submit">Send message</button>
-                <button class="button it" type="submit">Invia messaggio</button>
+        <select id="request" name="request">
+            <option value="Available dice">Available dice / Dadi disponibili</option>
+            <option value="Custom commission">Custom commission / Commissione personalizzata</option>
+            <option value="Drop information">Drop information / Informazioni drop</option>
+            <option value="Other">Other / Altro</option>
+        </select>
+    </div>
 
-            </form>
+    <div class="form-row">
+        <label class="en" for="message">Message</label>
+        <label class="it" for="message">Messaggio</label>
+        <textarea id="message" name="message" required></textarea>
+    </div>
 
-            <p class="form-note en">
-                This form opens your email app. A direct website form will be added later.
-            </p>
+    <button class="button en" type="submit">Send message</button>
+    <button class="button it" type="submit">Invia messaggio</button>
 
-            <p class="form-note it">
-                Questo modulo apre la tua app email. Un form diretto dal sito verrà aggiunto più avanti.
-            </p>
+</form>
+           <p class="form-note en">
+    Your message will be sent directly to The Luckless Mage.
+</p>
 
+<p class="form-note it">
+    Il tuo messaggio verrà inviato direttamente a The Luckless Mage.
+</p>
             <div class="rune-divider">ᚱ ᚢ ᚾ</div>
 
         </div>
