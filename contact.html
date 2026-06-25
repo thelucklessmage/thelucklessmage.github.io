@@ -254,6 +254,23 @@ textarea{
         padding:24px;
     }
 }
+
+    .form-status{
+    display:none;
+    margin-top:22px;
+    padding:16px 18px;
+    border:1px solid #d4af37;
+    border-radius:10px;
+    background:rgba(212,175,55,0.08);
+    color:#d4af37;
+    line-height:1.6;
+}
+
+.form-status.error{
+    border-color:#a94442;
+    background:rgba(169,68,66,0.12);
+    color:#f0b6b6;
+}
 </style>
 
 <link rel="stylesheet" href="nav.css">
@@ -373,7 +390,7 @@ textarea{
             <h2 class="en">Send a message</h2>
             <h2 class="it">Invia un messaggio</h2>
 
-           <form action="https://api.staticforms.dev/submit" method="POST">
+           <form id="contact-form" action="https://api.staticforms.dev/submit" method="POST">
 
     <input type="hidden" name="apiKey" value="sf_738378711996c68238372476">
 
@@ -413,6 +430,10 @@ textarea{
     <button class="button it" type="submit">Invia messaggio</button>
 
 </form>
+
+<div id="form-status" class="form-status"></div>
+
+            
            <p class="form-note en">
     Your message will be sent directly to The Luckless Mage.
 </p>
@@ -441,9 +462,59 @@ function setLang(lang){
     });
 }
 
+function setupContactForm(){
+    const form = document.getElementById("contact-form");
+    const status = document.getElementById("form-status");
+
+    if(!form || !status){
+        return;
+    }
+
+    form.addEventListener("submit", async function(event){
+        event.preventDefault();
+
+        const lang = localStorage.getItem("lang") || "en";
+
+        status.classList.remove("error");
+        status.style.display = "block";
+        status.textContent = lang === "it"
+            ? "Invio del messaggio in corso..."
+            : "Sending your message...";
+
+        const formData = new FormData(form);
+
+        try{
+            const response = await fetch(form.action, {
+                method: "POST",
+                body: formData
+            });
+
+            if(response.ok){
+                status.classList.remove("error");
+                status.textContent = lang === "it"
+                    ? "Messaggio inviato con successo. Ti risponderò appena possibile."
+                    : "Message sent successfully. I will reply as soon as possible.";
+
+                form.reset();
+            }else{
+                status.classList.add("error");
+                status.textContent = lang === "it"
+                    ? "Qualcosa non ha funzionato. Riprova o scrivimi direttamente via email."
+                    : "Something went wrong. Please try again or contact me directly by email.";
+            }
+        }catch(error){
+            status.classList.add("error");
+            status.textContent = lang === "it"
+                ? "Errore di connessione. Riprova o scrivimi direttamente via email."
+                : "Connection error. Please try again or contact me directly by email.";
+        }
+    });
+}
+
 window.onload = function(){
     let lang = localStorage.getItem("lang") || "en";
     setLang(lang);
+    setupContactForm();
 };
 </script>
 
